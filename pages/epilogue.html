@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Epilogue | Northbound Oath</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body class="v-fade-in">
+  <main class="v-menu-panel" style="max-width: 800px; margin: 4rem auto; text-align:center;">
+    <h1 id="idEpilogueTitle" data-i18n="epilogue_title">La Saga s'achève</h1>
+    
+    <section class="v-story-panel">
+      <div id="idEpilogueText"></div>
+    </section>
+
+    <br>
+    <a href="../index.html" class="v-btn v-btn-primary" style="text-decoration:none;" data-i18n="return_menu">Retour au Menu</a>
+  </main>
+
+  <script src="../assets/js/i18n.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script>
+    const oEndings = {
+      golden: {
+        FR: "<p><strong>Fin : Le Jarl Doré</strong><br>Votre destin et votre bravoure ont apporté l'honneur à votre clan. La Rune de Braise repose en sécurité dans votre salle, et votre nom est chanté par les scaldes.</p>",
+        ENG: "<p><strong>Ending: The Golden Jarl</strong><br>Your high fate and valor brought honor to your clan. The Ember Rune rests safely in your hall, and your name is sung by skalds.</p>",
+        JAP: "<p><strong>エンディング：黄金のヤール</strong><br>あなたの高い運命と勇気は一族に名誉をもたらした。エンバールーンは安全に保管され、あなたの名はスカルドによって歌われる。</p>",
+        CH: "<p><strong>结局：黄金雅尔</strong><br>你高贵的命运和英勇为你的氏族带来了荣誉。余烬符文安全地安置在你的大厅里，你的名字被吟游诗人传唱。</p>",
+        SWISSE: "<p><strong>Fin : Le Jarl en Or</strong><br>T'as géré. La Rune est bien au chaud chez toi, et tout le monde boit à ta santé.</p>"
+      },
+      survivor: {
+        FR: "<p><strong>Fin : Le Survivant</strong><br>Vous avez récupéré la rune, mais à un prix sanglant. Vous vivez pour combattre un autre hiver, bien que des ombres persistent dans votre esprit.</p>",
+        ENG: "<p><strong>Ending: The Survivor</strong><br>You recovered the rune, but at a bloody cost. You live to fight another winter, though shadows linger in your mind.</p>",
+        JAP: "<p><strong>エンディング：生存者</strong><br>血塗られた代償を払いルーンを取り戻した。心に影が残るものの、もう一つの冬を戦うために生き延びる。</p>",
+        CH: "<p><strong>结局：幸存者</strong><br>你寻回了符文，但付出了血的代价。你活着去迎接另一个冬天的战斗，尽管阴影在你的脑海中挥之不去。</p>",
+        SWISSE: "<p><strong>Fin : Le Survivant</strong><br>T'as la rune, mais t'en as bavé. Tu passeras l'hiver, même si t'as pris des sacrés coups.</p>"
+      },
+      ashen: {
+        FR: "<p><strong>Fin : La Chute de Cendres</strong><br>Votre destin s'est réduit en cendres. La neige réclame votre corps, et la Rune de Braise est perdue à jamais.</p>",
+        ENG: "<p><strong>Ending: The Ashen Fall</strong><br>Your fate dwindled to ash. The snow claims your body, and the Ember Rune is lost to time forever.</p>",
+        JAP: "<p><strong>エンディング：灰の落下</strong><br>運命は灰と化した。雪があなたの体を飲み込み、エンバールーンは永遠に失われた。</p>",
+        CH: "<p><strong>结局：灰烬的陨落</strong><br>你的命运化为灰烬。冰雪吞噬了你的身体，余烬符文永远消失在时间的洪流中。</p>",
+        SWISSE: "<p><strong>Fin : La Chute de Cendres</strong><br>C'est la cata. La neige t'a eu, et la Rune est perdue pour de bon.</p>"
+      }
+    };
+
+    function fnGetEndingText(oEnding) {
+      const sLang = window.fnGetLanguage ? window.fnGetLanguage() : "FR";
+      return oEnding[sLang] || oEnding["FR"];
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if(window.fnLoadProgress) window.fnLoadProgress();
+      
+      const elText = document.getElementById('idEpilogueText');
+      let iFate = 0;
+      if (window.objGameState) {
+        window.objGameState.strCurrentChapter = 'epilogue';
+        window.objGameState.iProgressPercent = 100;
+        if(window.fnSaveProgress) window.fnSaveProgress();
+        iFate = window.objGameState.iFatePoints || 0;
+      }
+
+      if (iFate >= 20) {
+        elText.innerHTML = fnGetEndingText(oEndings.golden);
+      } else if (iFate >= 0) {
+        elText.innerHTML = fnGetEndingText(oEndings.survivor);
+      } else {
+        elText.innerHTML = fnGetEndingText(oEndings.ashen);
+      }
+    });
+  </script>
+</body>
+</html>

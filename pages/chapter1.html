@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter I - The Oath by the Fjord</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/chapter.css">
+</head>
+<body>
+  <div class="v-chapter-shell">
+    <header class="v-chapter-header">
+      <a class="v-link-home" href="../index.html" data-i18n="menu_main">Menu Principal</a>
+      <h1 id="idChapterTitle" data-i18n="chapter1_title">Chapitre I</h1>
+      <p class="v-chapter-subtitle" data-i18n="chapter1_subtitle">Le Serment du Fjord</p>
+    </header>
+
+    <section class="v-story-panel" aria-live="polite">
+      <p id="idStoryText" class="v-story-text"></p>
+    </section>
+
+    <section class="v-choice-panel">
+      <h2 data-i18n="choose_path">Choisissez votre voie</h2>
+      <div id="idChoiceContainer" class="v-choice-container"></div>
+    </section>
+  </div>
+
+  <script src="../assets/js/i18n.js"></script>
+  <script src="../assets/js/story-engine.js"></script>
+  <script src="../assets/js/chapter1.js"></script>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

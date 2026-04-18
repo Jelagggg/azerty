@@ -1,0 +1,152 @@
+:root {
+  --clr-bg: #0f131a;
+  --clr-panel: rgba(17, 22, 31, 0.92);
+  --clr-text: #eee7da;
+  --clr-text-dim: #b9b1a4;
+  --clr-iron: #7c858f;
+  --clr-gold: #c7a56a;
+  --clr-gold-strong: #e3bc73;
+  --clr-wall: #2c3545;
+  --clr-path: #181d26;
+  --clr-player: #d94f2e;
+  --clr-exit: #6b8e6b;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  color: var(--clr-text);
+  font-family: Inter, Arial, sans-serif;
+  background:
+    linear-gradient(180deg, rgba(8, 11, 15, 0.88), rgba(14, 18, 24, 0.92)),
+    url("../images/wood-grain.svg") center/cover no-repeat fixed;
+  animation: animFadeIn 0.5s ease-out forwards;
+}
+
+body.is-exiting {
+  animation: animFadeOut 0.4s ease-in forwards;
+}
+
+@keyframes animFadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes animFadeOut {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(-10px); }
+}
+
+.v-mini-shell {
+  width: min(46rem, calc(100% - 2rem));
+  padding: 1.5rem;
+  border: 1px solid rgba(199, 165, 106, 0.22);
+  border-radius: 16px;
+  background: var(--clr-panel);
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.45);
+}
+
+.v-mini-header h1 {
+  margin: 0.55rem 0 0;
+  font-family: Cinzel, Georgia, serif;
+}
+
+.v-mini-header p {
+  margin: 0.5rem 0 1rem;
+  color: var(--clr-text-dim);
+}
+
+.v-link-home,
+.v-btn {
+  display: inline-block;
+  padding: 0.58rem 0.95rem;
+  border: 1px solid var(--clr-iron);
+  border-radius: 8px;
+  color: var(--clr-text);
+  text-decoration: none;
+  background: rgba(124, 133, 143, 0.14);
+  transition: all 0.3s ease;
+}
+
+.v-link-home:hover,
+.v-btn:hover {
+  border-color: var(--clr-gold);
+}
+
+.v-mini-panel {
+  padding: 1.25rem;
+  border: 1px solid rgba(199, 165, 106, 0.24);
+  border-radius: 12px;
+}
+
+.v-mini-status {
+  margin: 0 0 1rem;
+  min-height: 1.6rem;
+}
+
+/* Labyrinth Specific Styles */
+.v-labyrinth-board {
+  display: grid;
+  gap: 2px;
+  background-color: var(--clr-wall);
+  padding: 2px;
+  border: 2px solid var(--clr-gold);
+  border-radius: 4px;
+  margin: 0 auto;
+  width: fit-content;
+  box-shadow: 0 0 20px rgba(199, 165, 106, 0.1);
+}
+
+.v-cell {
+  width: 30px;
+  height: 30px;
+  background-color: var(--clr-path);
+  transition: background-color 0.1s ease;
+}
+
+.v-cell.is-wall {
+  background-color: var(--clr-wall);
+  background-image: url("data:image/svg+xml,%3Csvg width='30' height='30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h30v30H0z' fill='%232c3545'/%3E%3Cpath d='M0 15h30M15 0v30' stroke='%231f2633' stroke-width='2'/%3E%3C/svg%3E");
+}
+
+.v-cell.is-player {
+  background-color: var(--clr-player);
+  border-radius: 50%;
+  transform: scale(0.8);
+  box-shadow: 0 0 10px var(--clr-player);
+  animation: pulsePlayer 1.5s infinite alternate;
+}
+
+.v-cell.is-exit {
+  background-color: var(--clr-exit);
+  box-shadow: 0 0 15px var(--clr-exit);
+  animation: pulseExit 2s infinite alternate;
+}
+
+@keyframes pulsePlayer {
+  0% { transform: scale(0.7); box-shadow: 0 0 5px var(--clr-player); }
+  100% { transform: scale(0.9); box-shadow: 0 0 15px var(--clr-player); }
+}
+
+@keyframes pulseExit {
+  0% { opacity: 0.8; box-shadow: 0 0 10px var(--clr-exit); }
+  100% { opacity: 1; box-shadow: 0 0 20px var(--clr-exit); }
+}
+
+.v-mini-actions {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.v-btn-link {
+  border-color: rgba(199, 165, 106, 0.46);
+  font-weight: bold;
+  color: var(--clr-gold);
+}

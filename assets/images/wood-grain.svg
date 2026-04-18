@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1200" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="gWood" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2a1f18"/>
+      <stop offset="100%" stop-color="#1a1310"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1200" fill="url(#gWood)"/>
+  <g stroke="#3a2a21" stroke-opacity="0.45" stroke-width="6" fill="none">
+    <path d="M0 90c320 40 620-20 920 35s480 20 680 0"/>
+    <path d="M0 240c260 35 520-18 810 30s500 28 790-4"/>
+    <path d="M0 430c250 28 530-30 860 26s470 25 740-8"/>
+    <path d="M0 650c280 46 560-24 880 36s490 18 760-5"/>
+    <path d="M0 860c260 34 520-15 820 25s520 35 780 2"/>
+    <path d="M0 1030c300 48 640-20 950 30s430 15 650-6"/>
+  </g>
+</svg>
